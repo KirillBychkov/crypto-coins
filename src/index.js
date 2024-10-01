@@ -29,7 +29,7 @@ app.get('/stop', (req, res) => {
 
 app.get('/start', async (req, res) => {
     coinsListSet = ["altlayer", "mask-network", "open-campus", "zetachain", "blast", "illuvium", "biconomy",
-        "arkham", "gmx", "space-id", "meme", "basic-attention-token", "celo", "green-metaverse-token"];
+        "arkham", "gmx", "space-id", "meme", "basic-attention-token", "celo"];
 
     const coins = await fetchAllCoins(coinsListSet);
     coinsListSet.forEach((chainName) => {
