@@ -1,7 +1,7 @@
 import cors from "cors";
 import express, { json } from "express";
 import CEX, { fetchAllCoins } from "./helpers/cex.js";
-import {taskController} from "./taskRunner/taskController.js";
+import { taskController } from "./taskRunner/taskController.js";
 
 let coinsListSet = [];
 const allowedPairs = ["USDT", "FDUSD", "USDC"];
@@ -28,7 +28,8 @@ app.get('/stop', (req, res) => {
 });
 
 app.get('/start', async (req, res) => {
-    coinsListSet = ["altlayer", "mask-network", "open-campus", "zetachain", "blast", "illuvium", "biconomy", "arkham", "gmx", "space-id", "meme", "basic-attention-token", "celo", "green-metaverse-token"];
+    coinsListSet = ["altlayer", "mask-network", "open-campus", "zetachain", "blast", "illuvium", "biconomy"];
+    // ["arkham", "gmx", "space-id", "meme", "basic-attention-token", "celo", "green-metaverse-token"];
 
     const coins = await fetchAllCoins(coinsListSet);
     coinsListSet.forEach((chainName) => {
