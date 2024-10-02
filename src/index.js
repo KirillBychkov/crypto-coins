@@ -1,7 +1,6 @@
 import cors from "cors";
 import express, { json } from "express";
 import CEX, { fetchAllCoins } from "./helpers/cex.js";
-import { taskController } from "./taskRunner/taskController.js";
 import bigDecimal from "js-big-decimal";
 
 export let prices = {};
@@ -23,8 +22,7 @@ app.get('/stop', (req, res) => {
             coins: coinsListSet,
             cex: Object.keys(CEX.cexNamesOnCCXT),
             pairs: allowedPairs,
-            workers: taskController.getRunnerSize(),
-            filled: Object.keys(prices).length,
+            workers: Object.keys(prices).length,
         },
         response: prices
     });
@@ -102,8 +100,7 @@ app.get('/status', async (req, res) => {
             pairs: allowedPairs,
             coins: coinsListSet,
             cex: Object.keys(CEX.cexNamesOnCCXT),
-            workers: taskController.getRunnerSize(),
-            filled: Object.keys(prices).length,
+            workers: Object.keys(prices).length,
         },
         response,
     });
