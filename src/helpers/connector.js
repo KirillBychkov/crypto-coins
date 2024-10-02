@@ -9,7 +9,7 @@ export class Connector {
         this.cex = new ccxt.pro[type]();
     }
 
-    async subscribeOnTicker({ chainName, ticker, target, ...rest }) {
+    async subscribeOnTicker({ chainName, ticker, target, marketUrl, ...rest }) {
         const key = chainName + '__' + ticker + '__' + target;
 
         if(!this.stopList[key]) {
@@ -20,12 +20,13 @@ export class Connector {
                         time: new Date(),
                         asks: collectVolume(orderbook.asks),
                         bids: collectVolume(orderbook.bids),
-                        minVolume: minVolume,
+                        marketUrl,
+                        minVolume,
                     };
                     console.info(key);
                 } catch (e) {
                     console.info('ERROR WATCHER ', e, {
-                        ...rest
+                        chainName, ticker, target, marketUrl, ...rest
                     });
                 }
             }, 30000);
