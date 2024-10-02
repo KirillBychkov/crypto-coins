@@ -38,6 +38,10 @@ app.post('/start', async (req, res) => {
         return res.status(400).json({ message: "Field 'slugs' is required and must be an array of existing slugs" })
     }
 
+    if(req.body.slugs.length > 15) {
+        return res.status(400).json({ message: "Maximum 15 coins allowed" });
+    }
+
     coinsListSet = req.body.slugs;
     req.body.slugs.forEach((chainName) => {
         const markets = coins[chainName].markets.filter(e =>
