@@ -11,11 +11,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.20.3",
     "ccxt": "^4.4.6",
     "cors": "^2.8.5",
     "cron": "^3.1.7",
     "dotenv": "^16.4.5",
     "express": "^4.21.0",
-    "got": "^14.4.2"
+    "got": "^14.4.2",
+    "js-big-decimal": "^2.1.0"
   }
 }

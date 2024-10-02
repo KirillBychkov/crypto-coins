@@ -1,10 +1,11 @@
 import ccxt from "ccxt";
 import { taskController } from "../taskRunner/taskController.js";
+import { collectVolume } from "./calc.js";
+import { minVolume, prices } from "../index.js";
 
 export class Connector {
     constructor(type) {
         this.type = type;
-        this.prices = {};
         this.stopList = [];
         this.cex = new ccxt.pro[type]();
     }
@@ -22,12 +23,13 @@ export class Connector {
 
                 try {
                     const orderbook = await this.cex.fetchOrderBook(ticker);
-                    this.prices[key] = {
+                    prices[key] = {
                         time: new Date(),
-                        asks: orderbook.asks,
-                        bids: orderbook.bids
+                        asks: collectVolume(orderbook.asks),
+                        bids: collectVolume(orderbook.bids),
+                        minVolume: minVolume,
                     };
-                    console.info(key, new Date());
+                    // console.info(key);
                 } catch (e) {
                     console.info('ERROR WATCHER ', e, {
                         ...rest
@@ -43,6 +45,5 @@ export class Connector {
         this.stopList.forEach(key => taskController.stop(key));
         this.stopList.forEach(key => taskController.stop(key));
         this.stopList = [];
-        this.prices = {};
     }
 }

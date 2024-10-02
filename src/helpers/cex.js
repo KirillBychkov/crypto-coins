@@ -66,10 +66,14 @@ const bitfinex = new Connector(cexNamesOnCCXT.bitfinex);
 const bitmart = new Connector(cexNamesOnCCXT.bitmart);
 
 export async function fetchAllCoins(coinsListSet) {
-    const url = 'http://209.38.199.247:3000/coins?slugs=' + coinsListSet.join(',');
+    try {
+        const url = 'http://209.38.199.247:3000/coins?slugs=' + coinsListSet.join(',');
 
-    const response = await got.get(url);
-    return JSON.parse(response.body);
+        const response = await got.get(url);
+        return JSON.parse(response.body);
+    } catch(e) {
+        return { message: e.message };
+    }
 }
 
 export default {
