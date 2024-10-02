@@ -4,6 +4,9 @@ import CEX, { fetchAllCoins } from "./helpers/cex.js";
 import { taskController } from "./taskRunner/taskController.js";
 import bigDecimal from "js-big-decimal";
 
+process.setMaxListeners(0);
+process.on('uncaughtException', () => {});
+
 export let prices = {};
 export let coinsListSet = [];
 export const allowedPairs = ["USDT", "FDUSD", "USDC"];
