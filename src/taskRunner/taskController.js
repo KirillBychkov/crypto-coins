@@ -36,7 +36,7 @@ class TaskRunner {
 class TaskController {
     constructor() {
         this.eventEmitter = new EventEmitter();
-        this.eventEmitter.setMaxListeners(200);
+        this.eventEmitter.setMaxListeners(500);
         this.taskRunners = new Map();
     }
 

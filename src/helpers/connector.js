@@ -18,7 +18,7 @@ export class Connector {
 
             taskController.start(key, async () => {
                 if(!taskController.taskRunners.has(key)) {
-                    return Promise.resolve({continueRunning: false});
+                    return Promise.resolve({ continueRunning: false });
                 }
 
                 try {
