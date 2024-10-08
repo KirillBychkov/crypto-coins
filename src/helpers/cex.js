@@ -19,7 +19,6 @@ const cexNamesOnCCXT = {
 
     bitstamp: "bitstamp",
     upbit: "upbit",
-    bitfinex: "bitfinex",
     bitmart: "bitmart",
 };
 
@@ -41,7 +40,6 @@ const cexCoinMarketCapNames = {
 
     "bitstamp": "bitstamp",
     "upbit": "upbit",
-    "bitfinex": "bitfinex",
     "bitmart": "bitmart",
 };
 
@@ -62,7 +60,6 @@ const whitebit = new Connector(cexNamesOnCCXT.whitebit);
 
 const bitstamp = new Connector(cexNamesOnCCXT.bitstamp);
 const upbit = new Connector(cexNamesOnCCXT.upbit);
-const bitfinex = new Connector(cexNamesOnCCXT.bitfinex);
 const bitmart = new Connector(cexNamesOnCCXT.bitmart);
 
 export async function fetchAllCoins(coinsListSet) {
@@ -94,7 +91,6 @@ export default {
 
     bitstamp,
     upbit,
-    bitfinex,
     bitmart,
 
     cexNamesOnCCXT,
